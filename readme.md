@@ -1,7 +1,8 @@
 ## What is it?
 
-Plugin for DSC based alarm system to monitor its status
-Features network configuration by mobile phone
+Plugin for DSC Power864 based or similar alarm system. 
+Allows monitoring its status, like open zones and similar. 
+Features WiFi network configuration by mobile phone. 
  
 Designed to work with Fusor Hub: [https://github.com/fusor-io/fusor-hub]
    

@@ -1,5 +1,5 @@
 /*
- *  Monitoring DSC based alarm system - see open zones, status and etc.
+ *  Monitoring DSC Power864 based or similar alarm system.
  *  Needs direct access to serial data bus
  * 
  *  Based on Fusor framework
