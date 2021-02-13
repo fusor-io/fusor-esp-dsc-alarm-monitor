@@ -1,0 +1,31 @@
+{
+	"variables": [],
+	"info": {
+		"name": "fusor-alarm",
+		"_postman_id": "166e3c0a-357e-1812-0a4e-9c84af00ff90",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Put alm definition",
+			"request": {
+				"url": "http://192.168.1.200:3000/definitions/sm/alm",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"o\": {\n        \"dsc.fire\":  { \"s\": \"c\", \"t\": 0 },\n        \"dsc.prog\":  { \"s\": \"c\", \"t\": 0 },\n        \"dsc.err\":   { \"s\": \"c\", \"t\": 0 },\n        \"dsc.byps\":  { \"s\": \"c\", \"t\": 0 },\n        \"dsc.mem\":   { \"s\": \"c\", \"t\": 0 },\n        \"dsc.asign\": { \"s\": \"c\", \"t\": 0 },\n        \"dsc.armed\": { \"s\": \"c\", \"t\": 0 },\n        \"dsc.ready\": { \"s\": \"c\", \"t\": 0 },\n        \"dsc.clean\": { \"s\": \"c\", \"t\": 0 },\n        \"dsc.zopen\": { \"s\": \"c\", \"t\": 0 },\n        \"dsc.popen\": { \"s\": \"c\", \"t\": 0 },\n        \"dsc.exit\":  { \"s\": \"c\", \"t\": 0 },\n        \"dsc.beep\":  { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z1\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z2\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z3\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z4\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z5\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z6\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z7\":    { \"s\": \"c\", \"t\": 0 },\n        \"dsc.z8\":    { \"s\": \"c\", \"t\": 0 }\n    },\n    \"s\": {\n        \"t\": 0,\n        \"b\": [\"alm.read\"],\n        \"s\": {}\n    }\n}\n "
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
