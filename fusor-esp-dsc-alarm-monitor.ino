@@ -9,6 +9,8 @@
  *  For more info look in readme.md
  */
 
+
+// uncomment and recompile libraries for debugging
 // #define SM_DEBUGGER
 
 #include <Arduino.h>
@@ -31,10 +33,12 @@ unsigned long getTime()
   return millis();
 }
 
+#ifdef SM_DEBUGGER
 void debugPrinter(const char *message)
 {
-  Serial.print(message);
+   Serial.print(message);
 }
+#endif
 
 NodeConnector nodeConnector;
 StateMachineController sm = StateMachineController("alm", sleepFunction, getTime);
@@ -44,10 +48,14 @@ void setup() {
   Serial.begin(57600);
 
   delay(100);
-  pinMode(D5, INPUT); // digital input for control button
+  pinMode(D1, INPUT); // digital input for control button
 
-  // D5 - control button for node setup
-  nodeConnector.setup(D5, false);
+#ifdef SM_DEBUGGER
+  sm.setDebugPrinter(debugPrinter);
+#endif
+
+  // D1 - control button for node setup
+  nodeConnector.setup(D1, false);
 
   if (nodeConnector.isSmdLoaded) Serial.println(F("SMD loaded"));
   else {
