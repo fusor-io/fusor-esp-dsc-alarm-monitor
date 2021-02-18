@@ -46,7 +46,7 @@ DSCAlarmSystemPlugin dcaAlarmSystemPlugin = DSCAlarmSystemPlugin("dsc", clockPin
 
 void setup() {
   // set high uart speed to reduce wait time when printing debug messages
-  Serial.begin(921600);
+  Serial.begin(1000000);
 
   delay(100);
   pinMode(D1, INPUT); // digital input for control button
