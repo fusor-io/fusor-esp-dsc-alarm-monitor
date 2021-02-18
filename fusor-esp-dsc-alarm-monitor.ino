@@ -45,7 +45,8 @@ StateMachineController sm = StateMachineController("alm", sleepFunction, getTime
 DSCAlarmSystemPlugin dcaAlarmSystemPlugin = DSCAlarmSystemPlugin("dsc", clockPin, signalPin);
 
 void setup() {
-  Serial.begin(57600);
+  // set high uart speed to reduce wait time when printing debug messages
+  Serial.begin(921600);
 
   delay(100);
   pinMode(D1, INPUT); // digital input for control button
