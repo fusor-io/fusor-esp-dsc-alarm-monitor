@@ -23,25 +23,8 @@
 const int clockPin = D6;
 const int signalPin = D5;
 
-void sleepFunction(unsigned long ms)
-{
-  delay(ms);
-}
+NodeConnector nodeConnector("alm");
 
-unsigned long getTime()
-{
-  return millis();
-}
-
-#ifdef SM_DEBUGGER
-void debugPrinter(const char *message)
-{
-   Serial.print(message);
-}
-#endif
-
-NodeConnector nodeConnector;
-StateMachineController sm = StateMachineController("alm", sleepFunction, getTime);
 DSCAlarmSystemPlugin dcaAlarmSystemPlugin = DSCAlarmSystemPlugin("dsc", clockPin, signalPin);
 
 void setup() {
@@ -51,32 +34,21 @@ void setup() {
   delay(100);
   pinMode(D1, INPUT); // digital input for control button
 
-#ifdef SM_DEBUGGER
-  sm.setDebugPrinter(debugPrinter);
-#endif
-
   // D1 - control button for node setup
-  nodeConnector.setup(D1, false);
-
-  if (nodeConnector.isSmdLoaded) Serial.println(F("SMD loaded"));
+  if (nodeConnector.setup(D1, false)) Serial.println(F("SMD loaded"));
   else {
     Serial.println(F("No SMD. Halt."));
     while(true) delay(100000);
   }
 
-
-  nodeConnector.initSM(&sm);
-  Serial.println(F("State Machine created"));
-  sm.registerPlugin(&dcaAlarmSystemPlugin);
-
+  nodeConnector.sm.registerPlugin(&dcaAlarmSystemPlugin);
   Serial.println(F("Actions and plugins registered"));
 
-  sm.init();
+  nodeConnector.start();
   Serial.println(F("State machine initialized"));
 }
 
 
 void loop() {
-  sm.cycle();
   nodeConnector.loop();
 }
